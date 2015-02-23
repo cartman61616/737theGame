@@ -96,7 +96,6 @@ public class Main {
 						System.out.println("\t2. Use Beer Powers");
 						System.out.println("\t3. Eat Pizza");
 						System.out.println("\t4. Drink a Beer");
-						System.out.println("\t5. Run");
 
 						input = in.nextLine();
 						if (input.equals("1")) {
@@ -127,9 +126,13 @@ public class Main {
 								System.out.println("You feel your strength increasing causing you to attack the enemy for 25 damage!");
 								enemyHealth -= 25;
 							} else if (input.equals("2")) {
-								//implement
+								System.out.println("\t> You drink a Brick Red!"
+										+ "Using the power of this rare beer you gain 25 beer points!");
+								beerPoints += 25;
 							} else if (input.equals("3")) {
-								//implement
+								System.out.println("\t> You utilize the mysterious power of beer to strike you enemy for half of it's health!");
+								int beligerantStrike = (int) (.5 * enemyHealth);
+								enemyHealth -= beligerantStrike;
 							} else if(input.equals("4")){
 								//no implementation needed. Returns to previous state.
 							} else {
@@ -146,10 +149,6 @@ public class Main {
 							} else {
 								System.out.println("\t> You have no pizza left, defeat enemies for a chance to get one");
 							}
-
-						} else if (input.equals("5")) {
-							System.out.println("\t> You run away from the " + stageOneEnemy);
-							continue GAME;
 						} else {
 							System.out.println("\tInvalid command");
 						}
@@ -226,11 +225,18 @@ public class Main {
 						System.out.println("\t4. Return to previous menu");
 						input = in.nextLine();
 						if (input.equals("1")) {
-							//implement
+							System.out.println("\t> Using Heinzinger's Super Chugging Skill, you have chugged a beer"
+									+ "in 3 seconds!");
+							System.out.println("You feel your strength increasing causing you to attack the enemy for 25 damage!");
+							enemyHealth -= 25;
 						} else if (input.equals("2")) {
-							//implement
+							System.out.println("\t> You drink a Brick Red!"
+									+ "Using the power of this rare beer you gain 25 beer points!");
+							beerPoints += 25;
 						} else if (input.equals("3")) {
-							//implement
+							System.out.println("\t> You utilize the mysterious power of beer to strike you enemy for half of it's health!");
+							int beligerantStrike = (int) (.5 * enemyHealth);
+							enemyHealth -= beligerantStrike;
 						} else if(input.equals("4")){
 							//no implementation needed. Returns to previous state.
 						} else {
