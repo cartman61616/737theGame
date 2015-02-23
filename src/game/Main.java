@@ -13,27 +13,30 @@ public class Main {
 
 		// Game variables
 		String[] enemies = { "Skeleton", "Zombie", "Warrior", "Assassin" };
+		String[] finalLegEnemies = {"Inexperienced crowdsurfer"};
 		String boss1 = "Ticketmaster";
 		String boss2 = "TSA";
-		String boss3 = "Buckminster Staff";
+		String boss3 = "Getting on the B line with a Suitcase";
+		String boss4 = "Buckminster Staff";
 		String finalBoss = "HoB Staff";
 		int boss1Health = 75;
 		int boss2Health = 85;
 		int boss3Health = 90;
+		int boss4Health = 95;
 		int finalBossHealth = 100;
 		int maxEnemyHealth = 75;
 		int enemyAttackDamage = 15;
 
 		// Player variables
 		int health = 100;
-		int mana = 100;
+		int beerPoints = 100;
 		int attackDmg = 20;
 		int numPizzaSlices = 3;
 		int numBeers = 3;
 		int beerManaAmount = 20;
 		int pizzaSliceHealAmount = 30;
-		int pizzaSliceDropChance = 30; // Percentage
-		int beerDropChance = 30;
+		int pizzaSliceDropChance = 30; //Percentage
+		int beerDropChance = 30; //Percentage
 
 		boolean running = true;
 
@@ -44,7 +47,7 @@ public class Main {
 		GAME:
 			while (running) {
 				System.out.println("--------------------------------------");
-				
+
 				System.out.println("Please choose your starting point");
 				System.out.println("1. Los Angeles, California");
 				System.out.println("2. Atlanta, Georgia");
@@ -65,13 +68,14 @@ public class Main {
 				} else {
 					System.out.println("That isn't a valid city. Contact the lazy developer to add it");
 				}
-				
+
 				int enemyHealth = rand.nextInt(maxEnemyHealth);
 				String enemy = enemies[rand.nextInt(enemies.length)];
 				System.out.println("\t# " + enemy + " has appeared! #\n");
 
 				while (enemyHealth > 0) {
 					System.out.println("\tYour HP: " + health);
+					System.out.println("\tYour BP: " + beerPoints);
 					System.out.println("\t" + enemy + "'s HP: " + enemyHealth);
 					System.out.println("\n\tWhat would you like to do?");
 					System.out.println("\t1. Attack");
@@ -80,8 +84,9 @@ public class Main {
 					System.out.println("\t4. Drink a Beer");
 					System.out.println("\t5. Run");
 
-					String input = in.nextLine();
+					input = in.nextLine();
 					if (input.equals("1")) {
+
 						int damageDealt = rand.nextInt(attackDmg);
 						int damageTaken = rand.nextInt(enemyAttackDamage);
 
@@ -89,14 +94,30 @@ public class Main {
 						health -= damageTaken;
 
 						System.out.println("\t> You strike the " + enemy + " for " + damageDealt + " damage");
-						System.out.println("\t> You recieved " + damageTaken + " in retaliation");
+						System.out.println("\t> You recieved " + damageTaken + " damage in retaliation");
 
 						if (health < 1) {
 							System.out.println("\t You have taken too much damage, you are too weak to go on");
 							break;
 						}
 					} else if (input.equals("2")) {
-						//need to implement
+						System.out.println("Which beer power do you want to use?");
+						System.out.println("\t1. Heinzinger's Super Chugging Skill");
+						System.out.println("\t2. Drink a Brick Red");
+						System.out.println("\t3. Beligerant Strike");
+						System.out.println("\t4. Return to previous menu");
+						input = in.nextLine();
+						if (input.equals("1")) {
+							//implement
+						} else if (input.equals("2")) {
+							//implement
+						} else if (input.equals("3")) {
+							//implement
+						} else if(input.equals("4")){
+							//no implementation needed. Returns to previous state.
+						} else {
+							System.out.println("Invalid entry you drunk!");
+						}
 					} else if (input.equals("3")) {
 
 						if (numPizzaSlices > 0) {
@@ -109,8 +130,6 @@ public class Main {
 							System.out.println("\t> You have no pizza left, defeat enemies for a chance to get one");
 						}
 
-					} else if (input.equals("6")) {
-						//need to implement
 					} else if (input.equals("5")) {
 						System.out.println("\t> You run away from the " + enemy);
 						continue GAME;
@@ -128,14 +147,19 @@ public class Main {
 				// If the random number is less than 50 it drops
 				if (rand.nextInt(100) < pizzaSliceDropChance) {
 					numPizzaSlices++;
-					System.out.println(" # The " + enemy + " dropped a health potion. # ");
-					System.out.println(" # You now have " + numPizzaSlices + " health potion(s). # ");
+					System.out.println(" # The " + enemy + " dropped a slize of piece. # ");
+					System.out.println(" # You now have " + numPizzaSlices + " slice(s) of pizza. # ");
+				}
+				if (rand.nextInt(100) < beerDropChance) {
+					numBeers++;
+					System.out.println(" # The " + enemy + " dropped a beer. # ");
+					System.out.println(" # You now have " + numPizzaSlices + " beer(s). # ");
 				}
 				System.out.println("--------------------------------------");
 				System.out.println("What would you like to do now?");
-				System.out.println("1. Continue fighting");
-				System.out.println("2. Exit dungeon");
-				String input = in.nextLine();
+				System.out.println("1. Continue your journey");
+				System.out.println("2. Quit");
+				input = in.nextLine();
 
 				while (!input.equals("1") && !input.equals("2")) {
 					System.out.println("invalid command");
@@ -145,7 +169,7 @@ public class Main {
 				if (input.equals("1")) {
 					System.out.println("You continue your adventure.");
 				} else if (input.equals("2")) {
-					System.out.println("You exit the dungeon.");
+					System.out.println("You have arrived at the HomeTown ThrowDown. Enjoy seeing the Mighty Mighty Bosstones");
 					break;
 				}
 			}
