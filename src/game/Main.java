@@ -49,7 +49,7 @@ public class Main {
 		GAME:
 			while (running) {
 				System.out.println("--------------------------------------");
-				System.out.println("Press any key to continue");
+				System.out.println("Press enter to continue");
 				String input = in.nextLine();
 				
 				System.out.println("Please choose your starting point");
@@ -181,10 +181,10 @@ public class Main {
 					}
 					enemyCounter++;
 					System.out.println("--------------------------------------");
-					System.out.println("What would you like to do now?");
-					System.out.println("1. Continue your journey");
-					System.out.println("2. Quit");
-					input = in.nextLine();
+//					System.out.println("What would you like to do now?");
+//					System.out.println("1. Continue your journey");
+//					System.out.println("2. Quit");
+//					input = in.nextLine();
 
 					while (!input.equals("1") && !input.equals("2")) {
 						System.out.println("invalid command");
