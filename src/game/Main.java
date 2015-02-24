@@ -49,38 +49,39 @@ public class Main {
 		GAME:
 			while (running) {
 				System.out.println("--------------------------------------");
+				System.out.println("Press any key to continue");
 				String input = in.nextLine();
 				
-//				System.out.println("Please choose your starting point");
-//				System.out.println("1. Los Angeles, California");
-//				System.out.println("2. Atlanta, Georgia");
-//				System.out.println("3. New York, New York");
-//				System.out.println("4. Minneapolis, Minnesota");
-//				System.out.println("5. Brunswick, Maine");
-//				String input = in.nextLine();
-//				if (input.equals("1")) {
-//					System.out.println("You have chosen Los Angeles.");
-//					System.out.println("As you begin your journey to the ThrowDown the first quest is obtaining tickets");
-//					System.out.println("You must survive 2 enemies before you encounter the dreaded Ticketmaster");
-//				} else if (input.equals("2")) {
-//					System.out.println("You have chosen Atlanta.");
-//					System.out.println("As you begin your journey to the ThrowDown the first quest is obtaining tickets");
-//					System.out.println("You must survive 2 enemies before you encounter the dreaded Ticketmaster");
-//				} else if (input.equals("3")) {
-//					System.out.println("You have chosen New York.");
-//					System.out.println("As you begin your journey to the ThrowDown the first quest is obtaining tickets");
-//					System.out.println("You must survive 2 enemies before you encounter the dreaded Ticketmaster");
-//				} else if (input.equals("4")) {
-//					System.out.println("You have chosen Minneapolis.");
-//					System.out.println("As you begin your journey to the ThrowDown the first quest is obtaining tickets");
-//					System.out.println("You must survive 2 enemies before you encounter the dreaded Ticketmaster");
-//				} else if (input.equals("5")) {
-//					System.out.println("You have chosen Brunswick.");
-//					System.out.println("As you begin your journey to the ThrowDown the first quest is obtaining tickets");
-//					System.out.println("You must survive 2 enemies before you encounter the dreaded Ticketmaster");
-//				} else {
-//					System.out.println("That isn't a valid city. Contact the lazy developer to add it");
-//				}
+				System.out.println("Please choose your starting point");
+				System.out.println("1. Los Angeles, California");
+				System.out.println("2. Atlanta, Georgia");
+				System.out.println("3. New York, New York");
+				System.out.println("4. Minneapolis, Minnesota");
+				System.out.println("5. Brunswick, Maine");
+				input = in.nextLine();
+				if (input.equals("1")) {
+					System.out.println("You have chosen Los Angeles.");
+					System.out.println("As you begin your journey to the ThrowDown the first quest is obtaining tickets");
+					System.out.println("You must survive 2 enemies before you encounter the dreaded Ticketmaster");
+				} else if (input.equals("2")) {
+					System.out.println("You have chosen Atlanta.");
+					System.out.println("As you begin your journey to the ThrowDown the first quest is obtaining tickets");
+					System.out.println("You must survive 2 enemies before you encounter the dreaded Ticketmaster");
+				} else if (input.equals("3")) {
+					System.out.println("You have chosen New York.");
+					System.out.println("As you begin your journey to the ThrowDown the first quest is obtaining tickets");
+					System.out.println("You must survive 2 enemies before you encounter the dreaded Ticketmaster");
+				} else if (input.equals("4")) {
+					System.out.println("You have chosen Minneapolis.");
+					System.out.println("As you begin your journey to the ThrowDown the first quest is obtaining tickets");
+					System.out.println("You must survive 2 enemies before you encounter the dreaded Ticketmaster");
+				} else if (input.equals("5")) {
+					System.out.println("You have chosen Brunswick.");
+					System.out.println("As you begin your journey to the ThrowDown the first quest is obtaining tickets");
+					System.out.println("You must survive 2 enemies before you encounter the dreaded Ticketmaster");
+				} else {
+					System.out.println("That isn't a valid city. Contact the lazy developer to add it");
+				}
 
 				int enemyHealth = rand.nextInt(maxEnemyHealth);
 				String stageOneEnemy = stageOneEnemies[rand.nextInt(stageOneEnemies.length)];
@@ -139,6 +140,7 @@ public class Main {
 							} else {
 								System.out.println("Invalid entry you drunk!");
 							}
+
 						} else if (input.equals("3")) {
 
 							if (numPizzaSlices > 0) {
@@ -194,6 +196,7 @@ public class Main {
 						System.out.println("You have arrived at the HomeTown ThrowDown. Enjoy seeing the Mighty Mighty Bosstones");
 						break;
 					}
+				
 				}
 				System.out.println("As the second foe is defeated the battle for Throwdown tickets truly begins");
 				System.out.println("\t# The evil" + boss1 + " has appeared! #\n");
