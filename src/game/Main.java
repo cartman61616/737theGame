@@ -13,15 +13,16 @@ public class Main {
 
 		// Game variables
 		String[] stageOneEnemies = { "Computer virus", "Different Time Zone"};
+		String[] stageTwoEnemies = {"Cab Driver", "Sky Captain", ""};
 		//String[] enemies = { "Skeleton", "Zombie", "Warrior", "Assassin" };
 		//String[] finalLegEnemies = {"Inexperienced crowdsurfer"};
 		String boss1 = "Ticketmaster";
-		//String boss2 = "TSA";
+		String boss2 = "TSA";
 		//String boss3 = "Getting on the B line with a Suitcase";
 		//String boss4 = "Buckminster Staff";
 		//String finalBoss = "HoB Staff";
 		int boss1Health = 75;
-		//int boss2Health = 85;
+		int boss2Health = 85;
 		//int boss3Health = 90;
 		//int boss4Health = 95;
 		//int finalBossHealth = 100;
@@ -29,6 +30,7 @@ public class Main {
 		int enemyAttackDamage = 15;
 		String playerName;
 		boolean loginCredentials = false;
+		boolean ticketInHand = false;
 
 		// Player variables
 		int health = 100;
@@ -84,7 +86,6 @@ public class Main {
 		}
 
 		System.out.println("\n--------------------------------------\n");
-		// Label
 		//STAGEONE:
 			while (running && loginCredentials == false) {
 
@@ -340,6 +341,95 @@ public class Main {
 					}
 				}
 
+			}
+			
+			while (running && ticketInHand == false) {
+				
+				System.out.println("Your next quest has began! To board the plane to Throwdown you must defeat enemies to obtain your plane tickets!"); //begun?
+				int enemyHealth = rand.nextInt(maxEnemyHealth);
+				String stageTwoEnemy = stageTwoEnemies[rand.nextInt(stageTwoEnemies.length)];
+				System.out.println("\t# " + stageTwoEnemy + " has appeared! #\n");
+
+				while (enemyHealth > 0) {
+					System.out.println("\t"+ playerName +"'s HP: " + health );
+					System.out.println("\t"+ playerName +"'s BP: " + beerPoints);
+					System.out.println("\t" + stageTwoEnemy + "'s HP: " + enemyHealth);
+					System.out.println("\n\tWhat would you like to do?");
+					System.out.println("\t1. Attack");
+					System.out.println("\t2. Use Beer Powers");
+					System.out.println("\t3. Eat Pizza");
+					System.out.println("\t4. Drink a Beer");
+
+					input = in.nextLine();
+					if (input.equals("1")) {
+
+						int damageDealt = rand.nextInt(attackDmg);
+						int damageTaken = rand.nextInt(enemyAttackDamage);
+
+						enemyHealth -= damageDealt;
+						health -= damageTaken;
+
+						System.out.println("\t> You strike the " + stageTwoEnemy + " for " + damageDealt + " damage");
+						System.out.println("\t> You recieved " + damageTaken + " damage in retaliation");
+
+						if (health < 1) {
+							System.out.println("\t You have taken too much damage, you are too weak to go on");
+							break;
+						}
+					} else if (input.equals("2")) {
+						System.out.println("Which beer power do you want to use?");
+						System.out.println("\t1. Heinzinger's Super Chugging Skill");
+						System.out.println("\t2. Drink a Brick Red");
+						System.out.println("\t3. Beligerant Strike");
+						System.out.println("\t4. Return to previous menu");
+						input = in.nextLine();
+						if (input.equals("1")) {
+							System.out.println("\t> Using Heinzinger's Super Chugging Skill, you have chugged a beer"
+									+ " in 3 seconds!");
+							System.out.println("\t> You feel your strength increasing causing you to attack the enemy for 25 damage!");
+							enemyHealth -= 25;
+							beerPoints -= 15;
+							System.out.println("\t> You now have " + beerPoints + " left.");
+						} else if (input.equals("2")) {
+							System.out.println("\t> You drink a Brick Red!"
+									+ "Using the power of this rare beer you gain 25 beer points!");
+							beerPoints += 25;
+							System.out.println("\t> You now have " + beerPoints + "!");
+						} else if (input.equals("3")) {
+							System.out.println("\t> You utilize the mysterious power of beer to strike you enemy for half of it's health!");
+							int beligerantStrike = (int) (.5 * enemyHealth);
+							enemyHealth -= beligerantStrike;
+							beerPoints -= 30;
+							System.out.println("\t> You now have " + beerPoints + " left.");
+						} else if(input.equals("4")){
+							//no implementation needed. Returns to previous state.
+						} else {
+							System.out.println("Invalid entry you drunk!");
+						}
+
+					} else if (input.equals("3")) {
+
+						if (numPizzaSlices > 0) {
+							health += pizzaSliceHealAmount;
+							numPizzaSlices--;
+							System.out.println("\t> You ate a slice of pizza, healed for: " + pizzaSliceHealAmount + "."
+									+ "\n\t> You now have " + health + "HP."
+									+ "\n\t> You now have " + numPizzaSlices + " slices of pizza left.\n");
+						} else {
+							System.out.println("\t> You have no pizza left, defeat enemies for a chance to get one");
+						}
+					} else if (input.equals("4"))
+					{
+
+						beerPoints += beerPointsHealAmount;
+						System.out.println("\t> You drink a beer replenishing your beer points!");
+						System.out.println("\t> You now have " + beerPoints + "BP");
+						System.out.println("\t> You now have " + numBeers + "beers left\n");
+
+					} else {
+						System.out.println("\tInvalid command");
+					}
+				}
 			}
 		System.out.println("######################################");
 		System.out.println("# Thank you for playing 737 the game #");
